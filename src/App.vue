@@ -36,8 +36,7 @@ export default {
   methods: {
     async init() {
       let info = await this.$api.load();
-
-      if (!info.distributor) {
+      if (info.distributor && !info.phone) {
         this.$router.replace("/DistributionLogin");
       }
     }

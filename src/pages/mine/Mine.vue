@@ -11,7 +11,7 @@
         </div>
       </div>
 
-      <router-link tag="div" to="/Distribution" class="distribute-content">
+      <router-link v-if="info.distributor" tag="div" to="/Distribution" class="distribute-content">
         <div class="distribution">
           <p>分销中心</p>
           <div class="integral">
@@ -68,16 +68,27 @@ export default {
     };
   },
   mounted() {
-    this.$api
-      .distributorInfo()
-      .then(distributorInfo => (this.distributorInfo = distributorInfo));
+    this.getDistributorInfo()
+  },
+  watch: {
+    info() {
+    this.getDistributorInfo()
+    }
   },
   computed: {
     info() {
       return this.$store.state.userInfo || {};
     }
   },
-  methods: {},
+  methods: {
+    getDistributorInfo(){
+      if(this.info.distributor) {
+      this.$api
+        .distributorInfo()
+        .then(distributorInfo => (this.distributorInfo = distributorInfo));
+    }
+    }
+  },
   components: {
     Footer
   }

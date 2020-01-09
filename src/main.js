@@ -4,13 +4,10 @@ import router from './router'
 import store from './store'
 import initializeApi from './api'
 
-// 引入mint全部组件
-// import Mint from 'mint-ui';
-// import "mint-ui/lib/style.css";
-// Vue.use(Mint);
 import Vant from 'vant';
 import 'vant/lib/index.css';
 import 'vant/lib/icon/local.css';  
+import "animate.css";
 import VSR from 'vue-scroll-reveal'
 
 Vue.use(Vant);

@@ -1,6 +1,6 @@
 import axios from "axios";
 import qs from "qs";
-
+axios.defaults.withCredentials = true;
 const URL = "http://47.111.115.249:8089";
 const API = {
   //根据分类获取产品

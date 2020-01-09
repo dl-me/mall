@@ -53,15 +53,31 @@
 
     <div
       class="details"
-      v-for="item in  10 "
-      :key="item"
-       
     >
-    
       <img src="../../assets/this.png" @click="onAdvertiseClick(item)"/>
       <!-- <img :src="item.pic" @click="onAdvertiseClick(item)" /> -->
       <div class="details-desc">
-        <button class="view-now" @click="onAdvertiseClick(item)" v-scroll-reveal.reset="options">立即查看</button>
+        <button class="view-now" @click="onAdvertiseClick(item)" >立即查看</button>
+      </div>
+    </div>
+
+        <div
+      class="details"
+    >
+      <img src="../../assets/this.png" @click="onAdvertiseClick(item)"/>
+      <!-- <img :src="item.pic" @click="onAdvertiseClick(item)" /> -->
+      <div class="details-desc">
+        <button class="view-now" @click="onAdvertiseClick(item)">立即查看</button>
+      </div>
+    </div>
+
+        <div
+      class="details"
+    >
+      <img src="../../assets/this.png" @click="onAdvertiseClick(item)"/>
+      <!-- <img :src="item.pic" @click="onAdvertiseClick(item)" /> -->
+      <div class="details-desc">
+        <button class="view-now" @click="onAdvertiseClick(item)" >立即查看</button>
       </div>
     </div>
 
@@ -91,6 +107,7 @@
 
 <script>
 import Footer from "@/components/footer/Footer.vue";
+import { log } from 'util';
 export default {
   name: "home",
   data() {
@@ -105,9 +122,6 @@ export default {
   },
   components: {
     Footer
-  },
-  computed: {
-    options: { delay: 2050 ,container: document.querySelector('.main main')}
   },
   watch: {
     activeCateId(id) {
@@ -124,6 +138,12 @@ export default {
     this.getAdvertiseList();
     this.recommendProductList();
     this.productCateList();
+
+    for (let viewNow of document.querySelectorAll('.view-now')) {
+    fake(viewNow, "fadeInLeft")
+    }
+
+    fake(document.querySelector(".refrigeration"), "fadeInUp")
   },
   methods: {
     onAdvertiseClick(item) {
@@ -149,6 +169,54 @@ export default {
     }
   }
 };
+
+let fakeStyle = document.createElement("style");
+fakeStyle.textContent = `
+
+@keyframes fakeA {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+._fake {
+  animation: fakeA 0.5s both;
+}
+`
+document.head.append(fakeStyle);
+
+function fake(target,name) {
+  target.style.opacity = 0;
+
+  let flag = false;
+
+   let intersectionObserver = new IntersectionObserver(function(entries) {
+    if(entries[0].isIntersecting && !flag) {
+      flag = true;
+      setTimeout(() => {
+        target.classList.add("_fake");
+        animateCSS(target, name);
+      }, 400);
+    }
+  });
+
+   intersectionObserver.observe(target);
+}
+
+function animateCSS(node, animationName, callback) {
+    node.classList.add('animated', animationName)
+
+    function handleAnimationEnd() {
+        // node.classList.remove('animated', animationName)
+    //     node.removeEventListener('animationend', handleAnimationEnd)
+    }
+
+    node.addEventListener('animationend', handleAnimationEnd)
+}
 </script>
 <style lang="less" scoped>
 .home {
@@ -256,6 +324,9 @@ export default {
   }
   .details {
     position: relative;
+    height: 100%;
+    width: 100%;
+
     img {
       height: 100%;
       width: 100%;
