@@ -7,17 +7,10 @@ import initializeApi from './api'
 import Vant from 'vant';
 import 'vant/lib/index.css';
 import 'vant/lib/icon/local.css';  
-import "animate.css";
-import VSR from 'vue-scroll-reveal'
+import Veveal from 'veveal';
 
 Vue.use(Vant);
-Vue.use(VSR,{
-  class: 'v-scroll-reveal', 
-  duration: 1000,
-  distance: '100px',
-  mobile: true,
-  delay:2000
-});
+Vue.use(Veveal);
 
 // 300毫秒点击延迟
 // import fastClick from 'fastclick'

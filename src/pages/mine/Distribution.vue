@@ -5,7 +5,7 @@
     </Header>
     <div class="distribution-content">
       <div class="distribution-item">
-        <div class="distribution-avatar">
+        <div class="distribution-avatar avaterImg">
           <img :src="icon" alt="头像" />
         </div>
         <p class="distribution-avatar">{{ nickname }}</p>
@@ -97,6 +97,11 @@ export default {
       display: flex;
       align-items: center;
       padding: 0.4rem 0.2rem;
+      .avaterImg {
+        height: 0.66rem;
+        width: 0.66rem;
+        border-radius: 50%;
+      }
       .distribution-avatar {
         margin-left: 0.16rem;
         font-size: 0.3rem;

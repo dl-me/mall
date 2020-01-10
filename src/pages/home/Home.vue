@@ -53,31 +53,13 @@
 
     <div
       class="details"
+      v-for="(item) in advertiseList.filter(item => item.type === 1).slice(0,3)"
+      :key="item.id"
+      :style="{backgroundImage: `url('${item.pic}')`}"
+      v-veveal.slideLeft
     >
-      <img src="../../assets/this.png" @click="onAdvertiseClick(item)"/>
-      <!-- <img :src="item.pic" @click="onAdvertiseClick(item)" /> -->
-      <div class="details-desc">
-        <button class="view-now" @click="onAdvertiseClick(item)" >立即查看</button>
-      </div>
-    </div>
-
-        <div
-      class="details"
-    >
-      <img src="../../assets/this.png" @click="onAdvertiseClick(item)"/>
-      <!-- <img :src="item.pic" @click="onAdvertiseClick(item)" /> -->
-      <div class="details-desc">
-        <button class="view-now" @click="onAdvertiseClick(item)">立即查看</button>
-      </div>
-    </div>
-
-        <div
-      class="details"
-    >
-      <img src="../../assets/this.png" @click="onAdvertiseClick(item)"/>
-      <!-- <img :src="item.pic" @click="onAdvertiseClick(item)" /> -->
-      <div class="details-desc">
-        <button class="view-now" @click="onAdvertiseClick(item)" >立即查看</button>
+      <div class="details-desc" >
+        <button class="view-now" @click="onAdvertiseClick(item)" v-veveal.slideInUp.slow>立即查看</button>
       </div>
     </div>
 
@@ -90,12 +72,13 @@
           v-for="(recommendItem, index) in recommendProductLists"
           :key="index"
           :to="`/ProductDetails?id=${recommendItem.id}`"
+          v-veveal.fadeInUp
         >
-          <div class="kind-item-content">
+          <div class="kind-item-content"  v-veveal.fadeInLeft>
             <p class="kind-item-title">{{ recommendItem.name }}</p>
             <p class="kind-item-desc">{{ recommendItem.subTitle }}</p>
           </div>
-          <div class="kind-item-img">
+          <div class="kind-item-img"  v-veveal.fadeInRight>
             <img :src="recommendItem.pic" />
           </div>
         </router-link>
@@ -138,12 +121,6 @@ export default {
     this.getAdvertiseList();
     this.recommendProductList();
     this.productCateList();
-
-    for (let viewNow of document.querySelectorAll('.view-now')) {
-    fake(viewNow, "fadeInLeft")
-    }
-
-    fake(document.querySelector(".refrigeration"), "fadeInUp")
   },
   methods: {
     onAdvertiseClick(item) {
@@ -151,6 +128,7 @@ export default {
     },
     async getAdvertiseList() {
       this.advertiseList = await this.$api.advertiseList();
+    
     },
     async recommendProductList() {
       this.recommendProductLists = await this.$api.getRecommendProductList({
@@ -169,54 +147,6 @@ export default {
     }
   }
 };
-
-let fakeStyle = document.createElement("style");
-fakeStyle.textContent = `
-
-@keyframes fakeA {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
-
-._fake {
-  animation: fakeA 0.5s both;
-}
-`
-document.head.append(fakeStyle);
-
-function fake(target,name) {
-  target.style.opacity = 0;
-
-  let flag = false;
-
-   let intersectionObserver = new IntersectionObserver(function(entries) {
-    if(entries[0].isIntersecting && !flag) {
-      flag = true;
-      setTimeout(() => {
-        target.classList.add("_fake");
-        animateCSS(target, name);
-      }, 400);
-    }
-  });
-
-   intersectionObserver.observe(target);
-}
-
-function animateCSS(node, animationName, callback) {
-    node.classList.add('animated', animationName)
-
-    function handleAnimationEnd() {
-        // node.classList.remove('animated', animationName)
-    //     node.removeEventListener('animationend', handleAnimationEnd)
-    }
-
-    node.addEventListener('animationend', handleAnimationEnd)
-}
 </script>
 <style lang="less" scoped>
 .home {
@@ -327,6 +257,10 @@ function animateCSS(node, animationName, callback) {
     height: 100%;
     width: 100%;
 
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
     img {
       height: 100%;
       width: 100%;
@@ -336,7 +270,7 @@ function animateCSS(node, animationName, callback) {
       overflow: auto;
       margin: auto;
       position: absolute;
-      bottom: 10%;
+      bottom: 24%;
       right: 0;
       left: 0;
       color: #fff;

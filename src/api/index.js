@@ -1,7 +1,11 @@
 import axios from "axios";
 import qs from "qs";
+
 axios.defaults.withCredentials = true;
-const URL = "http://47.111.115.249:8089";
+
+const URL = "http://47.111.115.249:8085";
+// const URL =  "http://api.5yaoqian.com";
+
 const API = {
   //根据分类获取产品
   getCategoryProductList: "/home/categoryProductList",
@@ -133,6 +137,8 @@ export default function(Vue) {
                 }
 
                 return value;
+              } else if(res.code === 401) {
+                // location.href = URL
               }
 
               message = res.message;
