@@ -90,6 +90,13 @@
       "unicode_decimal": 58946
     },
     {
+      "icon_id": "6077134",
+      "name": "微信",
+      "font_class": "weixin",
+      "unicode": "e660",
+      "unicode_decimal": 58976
+    },
+    {
       "icon_id": "6185223",
       "name": "导航，分类，种类",
       "font_class": "lui-type-of-personne",
@@ -97,11 +104,25 @@
       "unicode_decimal": 58964
     },
     {
+      "icon_id": "6394258",
+      "name": "朋友圈",
+      "font_class": "pengyouquan",
+      "unicode": "e95a",
+      "unicode_decimal": 59738
+    },
+    {
       "icon_id": "6503557",
       "name": "下一步，进入，选择-01",
       "font_class": "xiayibujinruxuanze-",
       "unicode": "e62c",
       "unicode_decimal": 58924
+    },
+    {
+      "icon_id": "9372516",
+      "name": "微信",
+      "font_class": "weixin1",
+      "unicode": "e683",
+      "unicode_decimal": 59011
     },
     {
       "icon_id": "9668314",

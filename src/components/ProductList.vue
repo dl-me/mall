@@ -1,8 +1,8 @@
 <template>
   <div class="search">
     <div class="search-header">
-      <div v-show="back" class="iconfont back-icon" @click="goBack">
-        <img src="../assets/back.png" alt />
+      <div v-show="back" class="back-icon" @click="goBack">
+        <span class="iconfont">&#xe60a;</span>
       </div>
       <van-search v-if="!category" background="unset" placeholder="请输入商品关键词" v-model="searchText" />
       <span class="search-input" v-else>分类列表{{list&&list[0]?` - ${list[0].productCategoryName}`:''}}</span>
@@ -217,9 +217,8 @@ export default {
     .back-icon {
       box-sizing: border-box;
       padding: 15px;
-      img {
-        height: 18px;
-        width: 18px;
+      .iconfont{
+        color: #fff;
       }
     }
     .search-input {

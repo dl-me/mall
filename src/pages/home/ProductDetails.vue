@@ -39,11 +39,15 @@
     <div class="type-selection" v-show="shareShow">
       <div class="shareFriends">
         <div class="friends">
-          <img src="../../assets/shareFriends.png" alt />
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-weixin" />
+          </svg>
           <p>微信</p>
         </div>
         <div class="weChat">
-          <img src="../../assets/weChat.png" alt />
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-pengyouquan" />
+          </svg>
           <p>微信朋友圈</p>
         </div>
         <p class="cancel" @click="shareShow = false">取消</p>
@@ -219,20 +223,20 @@ export default {
     }
   },
   mounted() {
-    this.init().then(async() => {
+    this.init().then(async () => {
       let wx = window.wx;
 
       if (!wx) {
         return;
       }
 
-      let config =  await this.$api.config({curUrl: location.href});
+      let config = await this.$api.config({ curUrl: location.href });
       wx.config({
         debug: true,
-        jsApiList: ['updateAppMessageShareData'],
+        jsApiList: ["updateAppMessageShareData"],
         ...config
       });
-      wx.ready(()=> {
+      wx.ready(() => {
         wx.updateAppMessageShareData({
           title: "分享给你一个超值商品，快来看看吧", // 分享标题
           desc: this.data.name, // 分享描述
@@ -725,22 +729,22 @@ export default {
 
     // 分享
     .shareFriends {
-      height: 172px;
+      height: 120px;
       display: flex;
       justify-content: space-around;
       // align-items: center;
       flex-wrap: wrap;
       font-size: 0.22rem;
       text-align: center;
-      img {
-        height: 1.1rem;
-        width: 1.1rem;
-      }
       .friends,
       .weChat {
         margin-top: 15px;
+        .icon {
+          height: .7rem;
+          width: .7rem;
+        }
         p {
-          margin-top: 0.3rem;
+          margin-top: 0.2rem;
         }
       }
       .cancel {

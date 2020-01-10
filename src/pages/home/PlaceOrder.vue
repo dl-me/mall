@@ -24,7 +24,7 @@
     <div class="pending-desc">
       <div class="order-time">
         <p class="order-time-title">
-          <img src="../../assets/mallicon.png" />
+          <img src="../../assets/src/mallicon.png" />
           <span>智冷库品</span>
         </p>
       </div>
@@ -93,7 +93,9 @@
         </div>
         <div class="pay-type">
           <div class="weChat-pay-desc">
-            <img src="../../assets/wePay.png" alt />
+            <svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon-weixin1" />
+            </svg>
             <p class="weChatPay">微信支付</p>
           </div>
           <van-checkbox :value="true"></van-checkbox>
@@ -527,17 +529,17 @@ export default {
         align-items: center;
         margin: 0 25px;
         .weChat-pay-desc {
-          width: 30%;
+          width: 35%;
           display: flex;
           align-items: center;
           justify-content: space-between;
+          .icon{
+            height: .44rem;
+            width: .44rem;
+          }
         }
         .weChatPay {
           font-size: 15px;
-        }
-        img {
-          height: 0.44rem;
-          width: 0.44rem;
         }
       }
     }

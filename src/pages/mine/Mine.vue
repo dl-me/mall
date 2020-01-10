@@ -16,7 +16,7 @@
           <p>分销中心</p>
           <div class="integral">
             <p>积分：{{distributorInfo.growthPoint}}</p>
-            <img src="../../assets/mine-next.png" alt />
+            <img src="../../assets/src/mine-next.png" alt />
           </div>
         </div>
       </router-link>
@@ -25,28 +25,28 @@
     <ul class="mine-list">
       <router-link tag="li" to="/Order">
         <div class="mine-list-desc">
-          <img src="../../assets/order.png" alt />
+          <img src="../../assets/src/order.png" alt />
           <p>我的订单</p>
         </div>
         <span class="iconfont">&#xe62c;</span>
       </router-link>
       <router-link tag="li" to="/AddressManagement">
         <div class="mine-list-desc">
-          <img src="../../assets/map.png" alt />
+          <img src="../../assets/src/map.png" alt />
           <p>地址管理</p>
         </div>
         <span class="iconfont">&#xe62c;</span>
       </router-link>
       <li @click="showPopup">
         <div class="mine-list-desc">
-          <img src="../../assets/servers.png" alt />
+          <img src="../../assets/src/servers.png" alt />
           <p>客服中心</p>
         </div>
         <span class="iconfont">&#xe62c;</span>
       </li>
       <router-link tag="li" to="/Set">
         <div class="mine-list-desc">
-          <img src="../../assets/order.png" alt />
+          <img src="../../assets/src/order.png" alt />
           <p>设置</p>
         </div>
         <span class="iconfont">&#xe62c;</span>
@@ -121,7 +121,7 @@ export default {
   border-bottom: 1px solid #ebedf0;
 }
 .mine {
-  background-image: url("../../assets/mine-bg.png");
+  background-image: url("../../assets/src/mine-bg.png");
   height: 185px;
   background-size: 100% 100%;
   border-radius: 0 0 25px 25px;

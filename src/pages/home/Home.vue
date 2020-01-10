@@ -2,7 +2,7 @@
   <div class="home">
     <div class="home-title">
       <div class="home-logo">
-        <img src="@/assets/logo.png" alt />
+        <img src="@/assets/src/logo.png" alt />
       </div>
       <div class="search-category">
         <router-link tag="div" to="/Search" class="search">

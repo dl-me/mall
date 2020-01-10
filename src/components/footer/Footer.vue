@@ -20,32 +20,32 @@ export default {
         {
           name: "/",
           title: "首页",
-          normal: require("../../assets/index.png"),  //默认图标
-          active: require("../../assets/selectedhome.png")  //选中图标
+          normal: require("../../assets/src/index.png"),  //默认图标
+          active: require("../../assets/src/selectedhome.png")  //选中图标
         },
         {
           name: "Commodity",
           title: "商品",
-          normal: require("../../assets/shangping.png"),
-          active: require("../../assets/shangpingChecked.png")
+          normal: require("../../assets/src/shangping.png"),
+          active: require("../../assets/src/shangpingChecked.png")
         },
         {
           name: "ShoppingCart",
           title: "购物车",
-          normal: require("../../assets/shopping.png"),
-          active: require("../../assets/shoppingchecked.png")
+          normal: require("../../assets/src/shopping.png"),
+          active: require("../../assets/src/shoppingchecked.png")
         },
         {
           name: "customerService",
           title: "客服",
-          normal: require("../../assets/server.png"),
-          active: require("../../assets/serverChecked.png")
+          normal: require("../../assets/src/server.png"),
+          active: require("../../assets/src/serverChecked.png")
         },
         {
           name: "Mine",
           title: "我的",
-          normal: require("../../assets/me.png"),
-          active: require("../../assets/minechecked.png")
+          normal: require("../../assets/src/me.png"),
+          active: require("../../assets/src/minechecked.png")
         }
       ]
     };

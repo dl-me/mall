@@ -63,7 +63,7 @@ export default {
   .arcode-content {
     height: 100vh;
     width: 100%;
-    background-image: url("../../assets/qrcode.png");
+    background-image: url("../../assets/src/qrcode.png");
     background-size: 100% 100%;
     position: relative;
     .back-icon {
@@ -109,7 +109,7 @@ export default {
     .qrcodebg-content {
       width: 82%;
       height: 7.67rem;
-      background-image: url("../../assets/qrcodebg.png");
+      background-image: url("../../assets/src/qrcodebg.png");
       position: absolute;
       top: 30%;
       left: 10%;

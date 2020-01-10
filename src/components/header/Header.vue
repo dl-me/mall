@@ -3,8 +3,8 @@
     <div :class="{ headerfix: showAbs }">
       <div class="header-fix" :class="theme">
         <div @click="goBack">
-          <div class="iconfont back-icon">
-            <img v-if="!hideBack" src="../../assets/back.png" alt />
+          <div class="back-icon">
+            <span v-if="!hideBack" class="iconfont">&#xe60a;</span>
           </div>
         </div>
         <div>
@@ -85,9 +85,8 @@ export default {
     .back-icon {
       display: flex;
       align-items: center;
-      img {
-        height: 18px;
-        width: 18px;
+      .iconfont{
+        color: #fff;
       }
     }
   }

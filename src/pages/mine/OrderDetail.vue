@@ -23,7 +23,7 @@
       <div class="pending-desc">
         <div class="order-time">
           <p class="order-time-title">
-            <img src="../../assets/mallicon.png" />
+            <img src="../../assets/src/mallicon.png" />
             <span>智冷库品</span>
           </p>
         </div>

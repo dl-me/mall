@@ -89,7 +89,7 @@ export default {
     width: 95%;
     height: 3rem;
     margin: 0.3rem auto;
-    background-image: url("../../assets/vipbg.png");
+    background-image: url("../../assets//src/vipbg.png");
     background-size: 100% 100%;
     border-radius: 20px;
     .distribution-item {
