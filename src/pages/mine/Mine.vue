@@ -37,7 +37,7 @@
         </div>
         <span class="iconfont">&#xe62c;</span>
       </router-link>
-      <li>
+      <li @click="showPopup">
         <div class="mine-list-desc">
           <img src="../../assets/servers.png" alt />
           <p>客服中心</p>
@@ -52,6 +52,16 @@
         <span class="iconfont">&#xe62c;</span>
       </router-link>
     </ul>
+
+    <van-popup v-model="show">
+      <a
+        v-for="(call,index) in telephone"
+        :key="index"
+        :href="'tel:' + call"
+        class="service"
+      >{{call}}</a>
+    </van-popup>
+
     <Footer></Footer>
   </div>
 </template>
@@ -64,15 +74,17 @@ export default {
   name: "Mine",
   data() {
     return {
+      telephone: ["028-67876808", "028-87878446"],
+      show: false,
       distributorInfo: { growthPoint: 0 }
     };
   },
   mounted() {
-    this.getDistributorInfo()
+    this.getDistributorInfo();
   },
   watch: {
     info() {
-    this.getDistributorInfo()
+      this.getDistributorInfo();
     }
   },
   computed: {
@@ -81,12 +93,15 @@ export default {
     }
   },
   methods: {
-    getDistributorInfo(){
-      if(this.info.distributor) {
-      this.$api
-        .distributorInfo()
-        .then(distributorInfo => (this.distributorInfo = distributorInfo));
-    }
+    showPopup() {
+      this.show = true;
+    },
+    getDistributorInfo() {
+      if (this.info.distributor) {
+        this.$api
+          .distributorInfo()
+          .then(distributorInfo => (this.distributorInfo = distributorInfo));
+      }
     }
   },
   components: {
@@ -96,6 +111,15 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.service {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid #ebedf0;
+}
 .mine {
   background-image: url("../../assets/mine-bg.png");
   height: 185px;
@@ -201,5 +225,15 @@ export default {
   li:last-child {
     border-bottom: none;
   }
+}
+</style>
+<style lang="less">
+.van-popup--center {
+  width: 250px;
+  border-radius: 20px;
+}
+.van-skeleton {
+  box-sizing: border-box;
+  padding-top: 20px;
 }
 </style>

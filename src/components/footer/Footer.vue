@@ -19,7 +19,7 @@ export default {
       tabbars: [
         {
           name: "/",
-          title: "我的",
+          title: "首页",
           normal: require("../../assets/index.png"),  //默认图标
           active: require("../../assets/selectedhome.png")  //选中图标
         },

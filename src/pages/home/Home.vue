@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-          <div class="home-title">
+    <div class="home-title">
       <div class="home-logo">
         <img src="@/assets/logo.png" alt />
       </div>
@@ -58,7 +58,7 @@
       :style="{backgroundImage: `url('${item.pic}')`}"
       v-veveal.slideLeft
     >
-      <div class="details-desc" >
+      <div class="details-desc">
         <button class="view-now" @click="onAdvertiseClick(item)" v-veveal.slideInUp.slow>立即查看</button>
       </div>
     </div>
@@ -74,11 +74,11 @@
           :to="`/ProductDetails?id=${recommendItem.id}`"
           v-veveal.fadeInUp
         >
-          <div class="kind-item-content"  v-veveal.fadeInLeft>
+          <div class="kind-item-content" v-veveal.fadeInLeft>
             <p class="kind-item-title">{{ recommendItem.name }}</p>
             <p class="kind-item-desc">{{ recommendItem.subTitle }}</p>
           </div>
-          <div class="kind-item-img"  v-veveal.fadeInRight>
+          <div class="kind-item-img" v-veveal.fadeInRight>
             <img :src="recommendItem.pic" />
           </div>
         </router-link>
@@ -90,7 +90,7 @@
 
 <script>
 import Footer from "@/components/footer/Footer.vue";
-import { log } from 'util';
+import { log } from "util";
 export default {
   name: "home",
   data() {
@@ -128,7 +128,6 @@ export default {
     },
     async getAdvertiseList() {
       this.advertiseList = await this.$api.advertiseList();
-    
     },
     async recommendProductList() {
       this.recommendProductLists = await this.$api.getRecommendProductList({
