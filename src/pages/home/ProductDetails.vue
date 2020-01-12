@@ -65,7 +65,7 @@
         </del>
       </div>
       <p class="sales">
-        <span class="rebate">
+        <span class="rebate" v-if="$store.state.userInfo.distributor">
           预计返佣
           <i>￥{{ selectedSpec.royaltyParam }}</i>
         </span>
@@ -125,7 +125,7 @@
           <p class="products-similar-item-title">{{ item.name }}</p>
           <p class="products-similar-item-new">￥{{ item.price }}</p>
           <del class="products-similar-item-old">￥{{ item.originalPrice }}</del>
-          <p class="products-similar-item-return">
+          <p class="products-similar-item-return"  v-if="$store.state.userInfo.distributor">
             返佣
             <span>￥{{ item.royaltyParam }}</span>
           </p>
@@ -232,12 +232,19 @@ export default {
 
       let config = await this.$api.config({ curUrl: location.href });
       wx.config({
-        debug: true,
-        jsApiList: ["updateAppMessageShareData"],
+        debug: false,
+        jsApiList: ["updateAppMessageShareData","updateTimelineShareData"],
         ...config
       });
       wx.ready(() => {
         wx.updateAppMessageShareData({
+          title: "分享给你一个超值商品，快来看看吧", // 分享标题
+          desc: this.data.name, // 分享描述
+          link: location.href, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+          imgUrl: this.selectedSpec.specImg // 分享图标
+        });
+
+        wx.updateTimelineShareData({
           title: "分享给你一个超值商品，快来看看吧", // 分享标题
           desc: this.data.name, // 分享描述
           link: location.href, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
@@ -619,7 +626,7 @@ export default {
     display: flex;
     flex-wrap: wrap;
     box-sizing: border-box;
-    justify-content: space-around;
+    justify-content: space-between;
     padding-bottom: 70px;
     .products-similar-item:nth-child(2n) {
       margin-left: 0;

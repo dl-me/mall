@@ -138,7 +138,7 @@ export default function(Vue) {
 
                 return value;
               } else if(res.code === 401) {
-                // location.href = URL
+                // location.href = res.loginUrl;
               }
 
               message = res.message;

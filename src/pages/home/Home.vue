@@ -10,13 +10,15 @@
         </router-link>
         <div class="category" @click="classifyMask = !classifyMask">
           <span class="iconfont">
-            {{
-            classifyMask ? "&#xe642;" : "&#xe600;"
-            }}
+            {{ classifyMask ? "&#xe642;" : "&#xe600;" }}
           </span>
         </div>
       </div>
-      <div class="classify" @click.self="classifyMask = false" v-show="classifyMask">
+      <div
+        class="classify"
+        @click.self="classifyMask = false"
+        v-show="classifyMask"
+      >
         <div class="mask">
           <div class="more-con">
             <van-collapse
@@ -25,13 +27,18 @@
               v-model="activeCateId"
               accordion
             >
-              <van-collapse-item :title="productItem.name" :name="productItem.id">
+              <van-collapse-item
+                :title="productItem.name"
+                :name="productItem.id"
+              >
                 <template v-if="secCateDict[productItem.id]">
                   <div
                     v-for="sec in secCateDict[productItem.id]"
                     :key="sec.id"
                     @click="cateItem(sec.id)"
-                  >{{ sec.name }}</div>
+                  >
+                    {{ sec.name }}
+                  </div>
                 </template>
               </van-collapse-item>
             </van-collapse>
@@ -43,7 +50,9 @@
     <div class="carousel">
       <van-swipe :autoplay="3000" indicator-color="white">
         <van-swipe-item
-          v-for="item in advertiseList.filter(item => item.type === 0).slice(0,5)"
+          v-for="item in advertiseList
+            .filter(item => item.type === 0)
+            .slice(0, 5)"
           :key="item.id"
         >
           <img :src="item.pic" @click="onAdvertiseClick(item)" />
@@ -53,13 +62,22 @@
 
     <div
       class="details"
-      v-for="(item) in advertiseList.filter(item => item.type === 1).slice(0,3)"
+      v-for="item in advertiseList.filter(item => item.type === 1).slice(0, 3)"
       :key="item.id"
-      :style="{backgroundImage: `url('${item.pic}')`}"
+      :style="{ backgroundImage: `url('${item.pic}')` }"
       v-veveal.slideLeft
     >
       <div class="details-desc">
-        <button class="view-now" @click="onAdvertiseClick(item)" v-veveal.slideInUp.slow>立即查看</button>
+        <p class="details-name">定制冰箱保鲜柜</p>
+        <p class="details-content">四门立式柜冷藏展示柜</p>
+        <p class="signature">咫尺尽在匠心</p>
+        <button
+          class="view-now"
+          @click="onAdvertiseClick(item)"
+          v-veveal.slideInUp.slow
+        >
+          立即查看
+        </button>
       </div>
     </div>
 
@@ -151,6 +169,7 @@ export default {
 .home {
   .iconfont {
     color: #fff;
+    font-size: 20px;
   }
   .home-title {
     width: 100%;

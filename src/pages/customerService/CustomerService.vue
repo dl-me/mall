@@ -1,18 +1,11 @@
 <template>
   <div class="custom-service">
-    <Header theme="white">
-      <template slot="mid">客服</template>
-    </Header>
-    <van-popup v-model="show">
-      <a v-for="(call,index) in telephone" :key="index" :href="'tel:' + call" class="service">{{call}}</a>
-    </van-popup>
-    <van-skeleton title avatar :row="10" />
+   
     <Footer></Footer>
   </div>
 </template>
 
 <script>
-import Header from "@/components/header/Header.vue";
 import Footer from "@/components/footer/Footer.vue";
 export default {
   name: "CustomerService",
@@ -22,11 +15,10 @@ export default {
       show: false
     };
   },
-  mounted() {
-    this.show = true;
+  created(){
+    this.$router.go(-1);
   },
   components: {
-    Header,
     Footer
   }
 };
@@ -37,7 +29,7 @@ export default {
   height: 100%;
   .service {
     width: 100%;
-    height: 60px;
+    height: 50%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -47,12 +39,12 @@ export default {
 }
 </style>
 <style lang="less">
-.van-popup--center {
-  width: 250px;
-  border-radius: 20px;
-}
-.van-skeleton {
-  box-sizing: border-box;
-  padding-top: 20px;
-}
+// .van-popup--center {
+//   width: 250px;
+//   border-radius: 20px;
+// }
+// .van-skeleton {
+//   box-sizing: border-box;
+//   padding-top: 20px;
+// }
 </style>

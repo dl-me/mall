@@ -30,7 +30,7 @@
             <p class="products-similar-item-title">{{item.name}}</p>
             <p class="products-similar-item-new">￥{{item.price}}</p>
             <del class="products-similar-item-old">￥{{item.originalPrice}}</del>
-            <p class="products-similar-item-return">
+            <p class="products-similar-item-return" v-if="$store.state.userInfo.distributor">
               返佣
               <span>￥{{item.royaltyParam}}</span>
             </p>
