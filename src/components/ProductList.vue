@@ -204,7 +204,9 @@ export default {
 <style lang="less" scoped>
 .search {
   height: 100%;
-  overflow: auto;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+
   .search-header {
     display: flex;
     align-items: center;

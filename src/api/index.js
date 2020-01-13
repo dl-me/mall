@@ -108,7 +108,7 @@ export default function(Vue) {
                   : {
                       data: qs.stringify(data),
                       headers: {
-                        "content-type": "application/x-www-form-urlencoded"
+                        "content-type": "application/x-www-form-urlencoded",
                       }
                     })
               })
@@ -138,7 +138,7 @@ export default function(Vue) {
 
                 return value;
               } else if(res.code === 401) {
-                // location.href = res.loginUrl;
+                location.href = res.loginUrl;
               }
 
               message = res.message;

@@ -59,6 +59,7 @@
         </van-swipe-item>
       </van-swipe>
     </div>
+      
 
     <div
       class="details"
@@ -67,14 +68,31 @@
       :style="{ backgroundImage: `url('${item.pic}')` }"
       v-veveal.slideLeft
     >
-      <div class="details-desc">
-        <p class="details-name">定制冰箱保鲜柜</p>
-        <p class="details-content">四门立式柜冷藏展示柜</p>
-        <p class="signature">咫尺尽在匠心</p>
+      <div class="details-desc" v-if="Math.round(Math.random())">
+        <p class="details-name" v-veveal.slideInUp.slow>{{item.note.split(";")[0]}}</p>
+        <p class="details-content" v-veveal.lightSpeedIn.slow>{{item.note.split(";")[1]}}</p>
+        <p class="signature" v-veveal.fadeInRight.slow>{{item.note.split(";")[2]}}</p>
+        <p class="signature" v-veveal.rotateInUpLeft.slow>{{item.note.split(";")[3]}}</p>
+
         <button
           class="view-now"
           @click="onAdvertiseClick(item)"
           v-veveal.slideInUp.slow
+        >
+          立即查看
+        </button>
+      </div>
+
+      <div class="details-desc" v-else>
+        <p class="details-name" v-veveal.flip.slow>{{item.note.split(";")[0]}}</p>
+        <p class="details-content" v-veveal.bounceIn.slow>{{item.note.split(";")[1]}}</p>
+        <p class="signature" v-veveal.zoomInRight.slow>{{item.note.split(";")[2]}}</p>
+        <p class="signature" v-veveal.rollIn.slow>{{item.note.split(";")[3]}}</p>
+
+        <button
+          class="view-now"
+          @click="onAdvertiseClick(item)"
+          v-veveal.hearBeat.slow
         >
           立即查看
         </button>
@@ -301,14 +319,16 @@ export default {
         font-size: 0.36rem;
         color: #676767;
         margin: 10px 0;
+        font-size: 0.4rem;
       }
       .signature {
         font-size: 0.24rem;
         border-top: 1px solid #fff;
-        width: 90px;
+        width: 46%;
         text-align: center;
         margin: 20px auto;
         padding: 10px 0;
+        font-size: .28rem;
       }
       .view-now {
         width: 150px;
@@ -395,7 +415,9 @@ export default {
 <style lang="less">
 .home {
   height: 100%;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x:hidden;
+  -webkit-overflow-scrolling: touch;
   [class*="van-hairline"]::after,
   .van-collapse-item {
     border-top: none;

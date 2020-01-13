@@ -10,7 +10,10 @@ import 'vant/lib/icon/local.css';
 import Veveal from 'veveal';
 
 Vue.use(Vant);
-Vue.use(Veveal);
+Vue.use(Veveal, {
+  distance: 100,
+  threshold: 1
+});
 
 // 300毫秒点击延迟
 // import fastClick from 'fastclick'
