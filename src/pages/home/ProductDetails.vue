@@ -15,7 +15,7 @@
         </div>
         <!-- <p class="header-right-icon" @click="shareShow = true">
           <span class="iconfont">&#xe626;</span>
-        </p> -->
+        </p>-->
       </div>
 
       <div class="header-fixed" v-show="!showAbs" :style="opacityStyle">
@@ -30,7 +30,7 @@
           </div>
           <!-- <p class="header-right-icon" @click="shareShow = true">
             <span class="iconfont">&#xe626;</span>
-          </p> -->
+          </p>-->
         </div>
       </div>
     </div>
@@ -52,7 +52,7 @@
         </div>
         <p class="cancel" @click="shareShow = false">取消</p>
       </div>
-    </div> -->
+    </div>-->
 
     <div class="product-desc">
       <p class="product-title">{{ data.name }}</p>
@@ -125,7 +125,7 @@
           <p class="products-similar-item-title">{{ item.name }}</p>
           <p class="products-similar-item-new">￥{{ item.price }}</p>
           <del class="products-similar-item-old">￥{{ item.originalPrice }}</del>
-          <p class="products-similar-item-return"  v-if="$store.state.userInfo.distributor">
+          <p class="products-similar-item-return" v-if="$store.state.userInfo.distributor">
             返佣
             <span>￥{{ item.royaltyParam }}</span>
           </p>
@@ -233,7 +233,7 @@ export default {
       let config = await this.$api.config({ curUrl: location.href });
       wx.config({
         debug: false,
-        jsApiList: ["updateAppMessageShareData","updateTimelineShareData"],
+        jsApiList: ["updateAppMessageShareData", "updateTimelineShareData"],
         ...config
       });
       wx.ready(() => {
@@ -511,6 +511,7 @@ export default {
         display: flex;
         justify-content: space-around;
         font-size: 15px;
+        margin: 0 auto;
       }
       .header-fixed-back {
         .iconfont {
@@ -747,8 +748,8 @@ export default {
       .weChat {
         margin-top: 15px;
         .icon {
-          height: .7rem;
-          width: .7rem;
+          height: 0.7rem;
+          width: 0.7rem;
         }
         p {
           margin-top: 0.2rem;
