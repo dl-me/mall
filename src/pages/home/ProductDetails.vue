@@ -13,9 +13,9 @@
         <div class="header-abs" @click="goBack">
           <span class="iconfont">&#xe60a;</span>
         </div>
-        <p class="header-right-icon" @click="shareShow = true">
+        <!-- <p class="header-right-icon" @click="shareShow = true">
           <span class="iconfont">&#xe626;</span>
-        </p>
+        </p> -->
       </div>
 
       <div class="header-fixed" v-show="!showAbs" :style="opacityStyle">
@@ -28,15 +28,15 @@
             <span>详情</span>
             <span>推荐</span>
           </div>
-          <p class="header-right-icon" @click="shareShow = true">
+          <!-- <p class="header-right-icon" @click="shareShow = true">
             <span class="iconfont">&#xe626;</span>
-          </p>
+          </p> -->
         </div>
       </div>
     </div>
 
     <!-- 分享 -->
-    <div class="type-selection" v-show="shareShow">
+    <!-- <div class="type-selection" v-show="shareShow">
       <div class="shareFriends">
         <div class="friends">
           <svg class="icon" aria-hidden="true">
@@ -52,7 +52,7 @@
         </div>
         <p class="cancel" @click="shareShow = false">取消</p>
       </div>
-    </div>
+    </div> -->
 
     <div class="product-desc">
       <p class="product-title">{{ data.name }}</p>

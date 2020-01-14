@@ -65,14 +65,14 @@
       class="details"
       v-for="item in advertiseList.filter(item => item.type === 1).slice(0, 3)"
       :key="item.id"
-      :style="{ backgroundImage: `url('${item.pic}')` }"
+      :style="{ backgroundImage: `url('${item.pic}')`, color:item.note.split('|')[1] === 2?'#fff':'#000' }"
       v-veveal.slideLeft
     >
       <div class="details-desc" v-if="Math.round(Math.random())">
         <p class="details-name" v-veveal.slideInUp.slow>{{item.note.split(";")[0]}}</p>
         <p class="details-content" v-veveal.lightSpeedIn.slow>{{item.note.split(";")[1]}}</p>
         <p class="signature" v-veveal.fadeInRight.slow>{{item.note.split(";")[2]}}</p>
-        <p class="signature" v-veveal.rotateInUpLeft.slow>{{item.note.split(";")[3]}}</p>
+        <p class="signature" v-veveal.rotateInUpLeft.slow>{{item.note.split(";")[3].split("|")[0]}}</p>
 
         <button
           class="view-now"
@@ -87,7 +87,7 @@
         <p class="details-name" v-veveal.flip.slow>{{item.note.split(";")[0]}}</p>
         <p class="details-content" v-veveal.bounceIn.slow>{{item.note.split(";")[1]}}</p>
         <p class="signature" v-veveal.zoomInRight.slow>{{item.note.split(";")[2]}}</p>
-        <p class="signature" v-veveal.rollIn.slow>{{item.note.split(";")[3]}}</p>
+        <p class="signature" v-veveal.rollIn.slow>{{item.note.split(";")[3].split("|")[0]}}</p>
 
         <button
           class="view-now"
@@ -309,7 +309,6 @@ export default {
       bottom: 24%;
       right: 0;
       left: 0;
-      color: #fff;
       text-align: center;
 
       .details-name {
@@ -317,18 +316,16 @@ export default {
       }
       .details-content {
         font-size: 0.36rem;
-        color: #676767;
+        // color: #676767;
         margin: 10px 0;
-        font-size: 0.4rem;
       }
       .signature {
         font-size: 0.24rem;
-        border-top: 1px solid #fff;
-        width: 46%;
+        border-top: 1px solid;
+        width: 53%;
         text-align: center;
         margin: 20px auto;
         padding: 10px 0;
-        font-size: .28rem;
       }
       .view-now {
         width: 150px;
@@ -336,8 +333,7 @@ export default {
         border: none;
         background-color: transparent;
         outline: none;
-        color: #fff;
-        border: 1px solid #fff;
+        border: 1px solid;
         font-size: 0.28rem;
       }
     }
