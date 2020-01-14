@@ -9,16 +9,10 @@
           <span class="iconfont">&#xe644;</span>
         </router-link>
         <div class="category" @click="classifyMask = !classifyMask">
-          <span class="iconfont">
-            {{ classifyMask ? "&#xe642;" : "&#xe600;" }}
-          </span>
+          <span class="iconfont">{{ classifyMask ? "&#xe642;" : "&#xe600;" }}</span>
         </div>
       </div>
-      <div
-        class="classify"
-        @click.self="classifyMask = false"
-        v-show="classifyMask"
-      >
+      <div class="classify" @click.self="classifyMask = false" v-show="classifyMask">
         <div class="mask">
           <div class="more-con">
             <van-collapse
@@ -27,18 +21,13 @@
               v-model="activeCateId"
               accordion
             >
-              <van-collapse-item
-                :title="productItem.name"
-                :name="productItem.id"
-              >
+              <van-collapse-item :title="productItem.name" :name="productItem.id">
                 <template v-if="secCateDict[productItem.id]">
                   <div
                     v-for="sec in secCateDict[productItem.id]"
                     :key="sec.id"
                     @click="cateItem(sec.id)"
-                  >
-                    {{ sec.name }}
-                  </div>
+                  >{{ sec.name }}</div>
                 </template>
               </van-collapse-item>
             </van-collapse>
@@ -59,7 +48,6 @@
         </van-swipe-item>
       </van-swipe>
     </div>
-      
 
     <div
       class="details"
@@ -74,13 +62,7 @@
         <p class="signature" v-veveal.fadeInRight.slow>{{item.note.split(";")[2]}}</p>
         <p class="signature" v-veveal.rotateInUpLeft.slow>{{item.note.split(";")[3].split("|")[0]}}</p>
 
-        <button
-          class="view-now"
-          @click="onAdvertiseClick(item)"
-          v-veveal.slideInUp.slow
-        >
-          立即查看
-        </button>
+        <button class="view-now" @click="onAdvertiseClick(item)" v-veveal.slideInUp.slow>立即查看</button>
       </div>
 
       <div class="details-desc" v-else>
@@ -89,13 +71,7 @@
         <p class="signature" v-veveal.zoomInRight.slow>{{item.note.split(";")[2]}}</p>
         <p class="signature" v-veveal.rollIn.slow>{{item.note.split(";")[3].split("|")[0]}}</p>
 
-        <button
-          class="view-now"
-          @click="onAdvertiseClick(item)"
-          v-veveal.hearBeat.slow
-        >
-          立即查看
-        </button>
+        <button class="view-now" @click="onAdvertiseClick(item)" v-veveal.hearBeat.slow>立即查看</button>
       </div>
     </div>
 
@@ -310,7 +286,9 @@ export default {
       right: 0;
       left: 0;
       text-align: center;
-
+      display: flex;
+      align-items: center;
+      flex-direction: column;
       .details-name {
         font-size: 0.4rem;
       }
@@ -324,7 +302,7 @@ export default {
         border-top: 1px solid;
         width: 53%;
         text-align: center;
-        margin: 20px auto;
+        // margin: 20px auto;
         padding: 10px 0;
       }
       .view-now {
@@ -412,7 +390,7 @@ export default {
 .home {
   height: 100%;
   overflow-y: auto;
-  overflow-x:hidden;
+  overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
   [class*="van-hairline"]::after,
   .van-collapse-item {
