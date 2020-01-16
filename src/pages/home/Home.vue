@@ -9,10 +9,16 @@
           <span class="iconfont">&#xe644;</span>
         </router-link>
         <div class="category" @click="classifyMask = !classifyMask">
-          <span class="iconfont">{{ classifyMask ? "&#xe642;" : "&#xe600;" }}</span>
+          <span class="iconfont">
+            {{ classifyMask ? "&#xe642;" : "&#xe600;" }}
+          </span>
         </div>
       </div>
-      <div class="classify" @click.self="classifyMask = false" v-show="classifyMask">
+      <div
+        class="classify"
+        @click.self="classifyMask = false"
+        v-show="classifyMask"
+      >
         <div class="mask">
           <div class="more-con">
             <van-collapse
@@ -21,13 +27,18 @@
               v-model="activeCateId"
               accordion
             >
-              <van-collapse-item :title="productItem.name" :name="productItem.id">
+              <van-collapse-item
+                :title="productItem.name"
+                :name="productItem.id"
+              >
                 <template v-if="secCateDict[productItem.id]">
                   <div
                     v-for="sec in secCateDict[productItem.id]"
                     :key="sec.id"
                     @click="cateItem(sec.id)"
-                  >{{ sec.name }}</div>
+                  >
+                    {{ sec.name }}
+                  </div>
                 </template>
               </van-collapse-item>
             </van-collapse>
@@ -36,66 +47,107 @@
       </div>
     </div>
 
-    <div class="carousel">
-      <van-swipe :autoplay="3000" indicator-color="white">
-        <van-swipe-item
-          v-for="item in advertiseList
-            .filter(item => item.type === 0)
-            .slice(0, 5)"
-          :key="item.id"
+    <van-swipe  style="height: calc(100% - 100px);margin-top: 50px;" vertical :loop="false" :autoplay="9999999" :show-indicators="false" :stop-propagation="true">
+      <van-swipe-item>
+        <div class="carousel">
+          <van-swipe :autoplay="3000" indicator-color="white">
+            <van-swipe-item
+              v-for="item in advertiseList
+                .filter(item => item.type === 0)
+                .slice(0, 5)"
+              :key="item.id"
+            >
+              <img :src="item.pic" @click="onAdvertiseClick(item)" />
+            </van-swipe-item>
+          </van-swipe>
+        </div>
+      </van-swipe-item>
+      <van-swipe-item
+        v-for="item in advertiseList
+          .filter(item => item.type === 1)
+          .slice(0, 3)"
+        :key="item.id"
+      >
+        <div
+          class="details"
+          :style="{
+            backgroundImage: `url('${item.pic}')`,
+            color: item.note.split('|')[1] === 2 ? '#fff' : '#000'
+          }"
+          v-veveal.slideLeft
         >
-          <img :src="item.pic" @click="onAdvertiseClick(item)" />
-        </van-swipe-item>
-      </van-swipe>
-    </div>
+          <div class="details-desc" v-if="Math.round(Math.random())">
+            <p class="details-name" v-veveal.slideInUp.slow>
+              {{ item.note.split(";")[0] }}
+            </p>
+            <p class="details-content" v-veveal.lightSpeedIn.slow>
+              {{ item.note.split(";")[1] }}
+            </p>
+            <p class="signature" v-veveal.fadeInRight.slow>
+              {{ item.note.split(";")[2] }}
+            </p>
+            <p class="signature" v-veveal.rotateInUpLeft.slow>
+              {{ item.note.split(";")[3].split("|")[0] }}
+            </p>
 
-    <div
-      class="details"
-      v-for="item in advertiseList.filter(item => item.type === 1).slice(0, 3)"
-      :key="item.id"
-      :style="{ backgroundImage: `url('${item.pic}')`, color:item.note.split('|')[1] === 2?'#fff':'#000' }"
-      v-veveal.slideLeft
-    >
-      <div class="details-desc" v-if="Math.round(Math.random())">
-        <p class="details-name" v-veveal.slideInUp.slow>{{item.note.split(";")[0]}}</p>
-        <p class="details-content" v-veveal.lightSpeedIn.slow>{{item.note.split(";")[1]}}</p>
-        <p class="signature" v-veveal.fadeInRight.slow>{{item.note.split(";")[2]}}</p>
-        <p class="signature" v-veveal.rotateInUpLeft.slow>{{item.note.split(";")[3].split("|")[0]}}</p>
-
-        <button class="view-now" @click="onAdvertiseClick(item)" v-veveal.slideInUp.slow>立即查看</button>
-      </div>
-
-      <div class="details-desc" v-else>
-        <p class="details-name" v-veveal.flip.slow>{{item.note.split(";")[0]}}</p>
-        <p class="details-content" v-veveal.bounceIn.slow>{{item.note.split(";")[1]}}</p>
-        <p class="signature" v-veveal.zoomInRight.slow>{{item.note.split(";")[2]}}</p>
-        <p class="signature" v-veveal.rollIn.slow>{{item.note.split(";")[3].split("|")[0]}}</p>
-
-        <button class="view-now" @click="onAdvertiseClick(item)" v-veveal.hearBeat.slow>立即查看</button>
-      </div>
-    </div>
-
-    <div class="kind">
-      <p class="refrigeration">推荐商品</p>
-      <div class="kind-content">
-        <router-link
-          tag="div"
-          class="kind-item"
-          v-for="(recommendItem, index) in recommendProductLists"
-          :key="index"
-          :to="`/ProductDetails?id=${recommendItem.id}`"
-          v-veveal.fadeInUp
-        >
-          <div class="kind-item-content" v-veveal.fadeInLeft>
-            <p class="kind-item-title">{{ recommendItem.name }}</p>
-            <p class="kind-item-desc">{{ recommendItem.subTitle }}</p>
+            <button
+              class="view-now"
+              @click="onAdvertiseClick(item)"
+              v-veveal.slideInUp.slow
+            >
+              立即查看
+            </button>
           </div>
-          <div class="kind-item-img" v-veveal.fadeInRight>
-            <img :src="recommendItem.pic" />
+
+          <div class="details-desc" v-else>
+            <p class="details-name" v-veveal.flip.slow>
+              {{ item.note.split(";")[0] }}
+            </p>
+            <p class="details-content" v-veveal.bounceIn.slow>
+              {{ item.note.split(";")[1] }}
+            </p>
+            <p class="signature" v-veveal.zoomInRight.slow>
+              {{ item.note.split(";")[2] }}
+            </p>
+            <p class="signature" v-veveal.rollIn.slow>
+              {{ item.note.split(";")[3].split("|")[0] }}
+            </p>
+
+            <button
+              class="view-now"
+              @click="onAdvertiseClick(item)"
+              v-veveal.hearBeat.slow
+            >
+              立即查看
+            </button>
           </div>
-        </router-link>
-      </div>
-    </div>
+        </div>
+      </van-swipe-item>
+      <van-swipe-item v-for="i in Math.ceil(recommendProductLists.length/4)" :key="`recom${i}`">
+        <div class="kind">
+          <p class="refrigeration">推荐商品</p>
+          <div class="kind-content">
+            <router-link
+              tag="div"
+              class="kind-item"
+              v-for="(recommendItem, index) in recommendProductLists.slice((i-1) * 4, i*4)"
+              :key="index"
+              :to="`/ProductDetails?id=${recommendItem.id}`"
+              v-veveal.fadeInUp
+            >
+              <div class="kind-item-content" v-veveal.fadeInLeft>
+                <p class="kind-item-title">{{ recommendItem.name }}</p>
+                <p class="kind-item-desc">{{ recommendItem.subTitle }}</p>
+              </div>
+              <div class="kind-item-img" v-veveal.fadeInRight>
+                <img :src="recommendItem.pic" />
+              </div>
+            </router-link>
+          </div>
+        </div>
+      </van-swipe-item>
+    </van-swipe>
+        
     <Footer></Footer>
   </div>
 </template>
@@ -317,9 +369,15 @@ export default {
     }
   }
   .kind {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
     background-color: #f1f1f1;
+    height: 100%;
+    
     .refrigeration {
-      height: 63px;
+      flex: none;
+      height: 64px;
       color: #333333;
       display: flex;
       justify-content: center;
@@ -337,15 +395,20 @@ export default {
       left: 46%;
     }
     .kind-content {
+      flex: 1;
+      overflow: hidden;
       display: flex;
+      // align-items: flex-start;
       justify-content: space-between;
       flex-wrap: wrap;
+      padding-bottom: 64px;
       box-sizing: border-box;
-      padding-bottom: 70px;
+
       .kind-item:nth-child(2n) {
         margin-left: 0;
       }
       .kind-item {
+        flex: none;
         box-sizing: border-box;
         //   height: 250px;
         // flex: 1;
